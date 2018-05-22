@@ -2,19 +2,19 @@
 	
 class Conexion{
    
-    private $datos = array(
+    /*private $datos = array(
 	"host" => "163.178.173.144",
 	"user" => "multi-paraiso",
 	"pass" => "multimedios.rp.2017",
 	"db" => "tarea1_b03675"
-    );
+    );*/
      
-   /* private $datos = array(
+    private $datos = array(
 	"host" => "localhost",
 	"user" => "root",
 	"pass" => "",
 	"db" => "tarea1_b03675"
-    );*/
+    );
     
     private $con;
 
