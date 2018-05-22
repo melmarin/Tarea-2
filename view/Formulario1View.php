@@ -381,7 +381,6 @@ include_once 'header.php';
         <option value="p">Paraíso</option>
         <option value="t">Turrialba</option>
     </select><br>
-    <font color="#ff0000"><font size="4"> -------------------------------------------------</font></font><input value="ENVIAR" type="submit">
     </div>
 </form>
 <?php

@@ -39,7 +39,7 @@ class Formulario3Model {
     
      public function calcularDistanciaEuclides($estilo, $promedio, $recinto) {
          
-        $this->sql = "SELECT Estilo, Promedio, Sexo, Recinto FROM estilosexopromediorecinto";
+        $this->sql = "SELECT Estilo, Promedio, Sexo, Recinto FROM EstiloSexoPromedioRecinto";
         
         $this->datos = $this->con->consultaRetorno($this->sql);
         while ($row = $this->datos->fetch(\PDO::FETCH_ASSOC)) {
@@ -53,6 +53,7 @@ class Formulario3Model {
         $filaFinal = "";
         
         foreach ($array as $fila) {
+             //sea asigna un peso de forma binaria
             
             if($estilo == $fila['Estilo']){
                 $pesoEstilo =1;
@@ -67,16 +68,17 @@ class Formulario3Model {
 
             if ($numTemp == 0) {
                 $numTemp = $numActual;
+                $filaFinal = $fila['Sexo']; // en caso que el primer resultado sea el correcto
             } else if ($numActual < $numTemp) {
                 $numTemp = $numActual;
                 $filaFinal = $fila['Sexo'];
             }
-            
+             // se reinician los valores
             $pesoRecinto=2;
             $pesoEstilo=2;
            
         }
-        
+        //para mostrar el resultado
         if($filaFinal == 'F'){
             $filaFinal = "Femenino";
         }

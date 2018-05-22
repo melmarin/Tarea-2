@@ -43,8 +43,8 @@ class PrincipalController {
          }
          
          elseif (isset($_GET['formulario5'])){
-            require_once 'controller/Formulario4Controller.php';
-            $this->controller = new Formulario4Controller();
+            require_once 'controller/Formulario5Controller.php';
+            $this->controller = new Formulario5Controller();
             $this->controller->invoke();
          }
          

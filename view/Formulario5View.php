@@ -43,6 +43,11 @@ include_once 'header.php';
             <option value="M">Male</option>
             <option value="NA">Not available</option>
         </select><br>
+        For teacher’s self-evaluation:<select name="self" value="self">
+            <option value="B">beginner</option>
+            <option value="I">intermediate</option>
+            <option value="A">advanced</option>
+        </select><br>
          For times teaching a course:<select name="course" value="course">
             <option value="1">Never</option>
             <option value="2">1 to 5 times</option>

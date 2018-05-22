@@ -1,26 +1,26 @@
 <?php namespace core;
 	
 class Conexion{
-   /*
+   
     private $datos = array(
-	"host" => "163.178.107.130",
-	"user" => "adm",
-	"pass" => "saucr.092",
-	"db" => "guerrilla_db"
-    );*/
+	"host" => "163.178.173.144",
+	"user" => "multi-paraiso",
+	"pass" => "multimedios.rp.2017",
+	"db" => "tarea1_b03675"
+    );
      
-    private $datos = array(
+   /* private $datos = array(
 	"host" => "localhost",
 	"user" => "root",
 	"pass" => "",
 	"db" => "tarea1_b03675"
-    );
+    );*/
     
     private $con;
 
     public function __construct(){
         try {
-            $this->con = new \PDO('mysql:host=localhost;dbname=tarea1_b03675', $this->datos['user'], $this->datos['pass']);
+            $this->con = new \PDO('mysql:host='.$this->datos['host'].';dbname=tarea1_b03675', $this->datos['user'], $this->datos['pass']);
             //echo 'Conectado a '.$this->con->getAttribute(\PDO::ATTR_CONNECTION_STATUS);
         } catch(PDOException $ex) {
             echo 'Error conectando a la BBDD. '.$ex->getMessage(); 
@@ -29,7 +29,7 @@ class Conexion{
     
     public function conectar(){
 	try {
-            $this->con = new \PDO('mysql:host=localhost;dbname=tarea1_b03675', $this->datos['user'], $this->datos['pass']);
+            $this->con = new \PDO('mysql:host='.$this->datos['host'].';dbname=tarea1_b03675', $this->datos['user'], $this->datos['pass']);
             //echo 'Conectado a '.$this->con->getAttribute(\PDO::ATTR_CONNECTION_STATUS);
         } catch(PDOException $ex) {
             echo 'Error conectando a la BBDD. '.$ex->getMessage(); 

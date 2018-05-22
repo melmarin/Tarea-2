@@ -26,7 +26,7 @@ class Formulario5Controller {
 
             if (($_GET['formulario5']) == "calcular") {
                 
-                $resultados = $this->model->calcularDistanciaEuclides($_POST['age'] , $_POST['gender'], $_POST['course'], 
+                $resultados = $this->model->calcularDistanciaEuclides($_POST['age'] , $_POST['gender'], $_POST['self'], $_POST['course'], 
                         $_POST['discipline'], $_POST['computers'], $_POST['webBased'], $_POST['webSite']);
                
             }//if formulario

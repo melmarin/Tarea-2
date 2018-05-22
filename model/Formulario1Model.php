@@ -33,6 +33,8 @@ class Formulario1Model {
 //get 
 
     public function calcularDistanciaEuclides($arrayEC, $arrayOR, $arrayCA, $arrayEA) {
+        
+        //calcula los valores de las columnas código reciclado del javascript
 
         $this->ec = $arrayEC['c5'] + $arrayEC['c9'] + $arrayEC['c13'] +
                 $arrayEC['c17'] + $arrayEC['c25'] + $arrayEC['c29'];
@@ -46,7 +48,7 @@ class Formulario1Model {
         $this->ea = $arrayEA['c4'] + $arrayEA['c12'] + $arrayEA['c24'] +
                 $arrayEA['c28'] + $arrayEA['c32'] + $arrayEA['c36'];
 
-        $this->sql = "SELECT CA, EC, EA, ORR, Estilo FROM datostarea1";
+        $this->sql = "SELECT CA, EC, EA, ORR, Estilo FROM DatosTarea1";
 
 
         $this->datos = $this->con->consultaRetorno($this->sql);
@@ -67,6 +69,7 @@ class Formulario1Model {
 
             if ($numTemp == 0) {
                 $numTemp = $numActual;
+                $filaFinal = $fila['Estilo'];  // en caso que el primer resultado sea el correcto
             } else if ($numActual < $numTemp) {
                 $numTemp = $numActual;
                 $filaFinal = $fila['Estilo'];
