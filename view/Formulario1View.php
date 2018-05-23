@@ -361,28 +361,6 @@ include_once 'header.php';
 } ?></h2>
 </form>
 
-<form name="final" action="estilo.php" method="post">
-    <input name="EC" maxlength="12" size="12" type="hidden" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input name="RO" maxlength="12" size="12" type="hidden" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    <input name="CA" maxlength="12" size="12" type="hidden" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    <input name="EA" maxlength="12" size="12" type="hidden" ><br>
-
-    <input type="hidden" maxlength="3" size="3" name="CAEC">&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="hidden" maxlength="3" size="3" name="EAOR">&nbsp;<br><br>
-
-    ESTILO&nbsp;&nbsp; <input maxlength="12" size="12" name="ESTILOFINAL">
-    <br>
-    Escriba su carnet:<input type="Text" name="carnet"><br>
-    Sexo:<select name="sex" value="Sexo">
-        <option value="f">Femenino</option>
-        <option value="m">Masculino</option>
-    </select><br>
-    Escoja su recinto:<select name="recinto" value="Recinto">
-        <option value="p">Paraíso</option>
-        <option value="t">Turrialba</option>
-    </select><br>
-    </div>
-</form>
 <?php
 //footer
 include_once 'footer.php';
