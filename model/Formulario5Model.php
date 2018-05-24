@@ -103,7 +103,6 @@ class Formulario5Model {
     //según los valores de cada característica
     public function asignaProbabilida($atributo) {
         // Se obtiene el valor para cada característica
-        //fórmula SUMAR SI
         $this->sql = "SELECT COUNT(DISTINCT " . $atributo . ") from datosprofesores";
         $this->datos = $this->con->consultaRetorno($this->sql);
         $this->row = $this->datos->fetch(\PDO::FETCH_NUM);
@@ -114,7 +113,8 @@ class Formulario5Model {
     }
 
     public function asignaFrecuenciasClaseBeginner($atributo, $valor) {
-        //Se cuenta la cantidad de veces que aparece el valor en la clase Beginner
+        //Se cuenta la cantidad de veces que aparece el valor en la clase Beginner para ese atributo
+                //fórmula SUMAR SI
         $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Beginner' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
@@ -124,7 +124,8 @@ class Formulario5Model {
     }
 
     public function asignaFrecuenciasClaseIntermediate($atributo, $valor) {
-         //Se cuenta la cantidad de veces que aparece el valor en la clase Intermediate
+         //Se cuenta la cantidad de veces que aparece el valor en la clase Intermediate para ese atributo
+                //fórmula SUMAR SI
         $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Intermediate' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
@@ -134,7 +135,8 @@ class Formulario5Model {
     }
 
     public function asignaFrecuenciasClaseAdvanced($atributo, $valor) {
-         //Se cuenta la cantidad de veces que aparece el valor en la clase Advanced
+         //Se cuenta la cantidad de veces que aparece el valor en la clase Advanced para ese atributo
+                //fórmula SUMAR SI
         $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Advanced' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
@@ -180,7 +182,7 @@ class Formulario5Model {
     }
     
     public function determinaResultadoBayes(){
-        //Se aplica la fórmula Producto de frecuencias * la Prioridad de la clase
+        //Se aplica la fórmula Producto de frecuencias * la Probabilidad de la clase
          $resultadoBegineer = $this->frecuenciasBeginner * self::probabilidadClase;
          $resultadoIntermediate = $this->frecuenciasIntermediate * self::probabilidadClase;
          $resultadoAdvanced = $this->frecuenciasAdvanced * self::probabilidadClase;

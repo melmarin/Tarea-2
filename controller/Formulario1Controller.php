@@ -38,7 +38,7 @@ class Formulario1Controller {
                 $datosEA = array("c4" => $_POST['c4'], "c12" => $_POST['c12'], "c24" => $_POST['c24'],
                     "c28" => $_POST['c28'], "c32" => $_POST['c32'], "c36" => $_POST['c36']);
 
-                $resultados = $this->model->calcularDistanciaEuclides($datosEC, $datosOR, $datosCA, $datosEA);
+                $resultados = $this->model->calcularClasificacionBayesiana($datosEC, $datosOR, $datosCA, $datosEA);
                
             }//if formulario
             
