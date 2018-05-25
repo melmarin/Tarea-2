@@ -26,7 +26,7 @@ class Formulario2Controller {
 
             if (($_GET['formulario2']) == "calcular") {
                 
-                $resultados = $this->model->calcularDistanciaEuclides($_POST['estiloAprendizaje'], $_POST['promedio'], $_POST['sexo']);
+                $resultados = $this->model->calcularClasificacionBayesiana($_POST['estiloAprendizaje'], $_POST['promedio'], $_POST['sexo']);
                
             }//if formulario
             

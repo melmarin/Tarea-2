@@ -14,70 +14,64 @@ class Formulario2Model {
     private $sql;
     private $datos;
     private $con;
+    
+    //Bayes
+    private $arrayValores = [];
+    private $arrayParaiso = [];
+    private $arrayTurrialba = [];
+    private $arrayProbFrecuenciaParaiso = [];
+    private $arrayProbFrecuenciaTurrialba = [];
+    private $frecuenciasParaiso;
+    private $frecuenciasTurrialba;
+
+    //Constantes
+    const m = 3; //Cantidad de clases(eventos)
+    const n = 2; //total de instancias por cada clase
+    const probabilidadClase = 1 / 2; //la probabilidad de que ocurra cada clase
 
     public function __construct() {
         $this->con = new \core\Conexion();
     }
-
-//ctor
-
-    public function set($atributo, $contenido) {
-        $this->$atributo = $contenido;
-    }
-
-//set
-
-    public function get($atributo) {
-        return $this->$atributo;
-    }
-
-//get 
     
-     public function calcularDistanciaEuclides($estilo, $promedio, $sexo) {
+     public function calcularClasificacionBayesiana($estilo, $promedio, $sexo) {
+          //Se asignan las probabilidades de cada atributo
+       array_push($this->arrayValores, $this->asignaProbabilida("Estilo"));
+       $this->insertarDatosAcomodados();
          
-        $this->sql = "SELECT Estilo, Promedio, Sexo, Recinto FROM EstiloSexoPromedioRecinto";
-        
+     }
+     
+      //Este metodo asigna la probabilidad de cada característica
+    //según los valores de cada característica
+    public function asignaProbabilida($atributo) {
+        // Se obtiene el valor para cada característica
+       /* $this->sql = "SELECT COUNT(DISTINCT " . $atributo . ") from datostarea1acomodados";
+        $this->datos = $this->con->consultaRetorno($this->sql);
+        $this->row = $this->datos->fetch(\PDO::FETCH_NUM);
+        $valor = intval($this->row[0]);*/
+        // SE ASIGNA LA PROBABILIDAD
+        $valor = 1 / 6;
+        return $valor;
+    }
+
+    //Método utilizado para insertar una nueva tabla con los datos acomodados
+    //Para el promedio el valor mínimo posible es 1 y el máximo es 10
+    //Por lo tanto se crearon 10 grupos dividiendo cada valor entre 1, tomando su parte entera
+    public function insertarDatosAcomodados() {
+        $this->sql = "SELECT Sexo, Recinto, Promedio, Estilo FROM estilosexopromediorecinto";
         $this->datos = $this->con->consultaRetorno($this->sql);
         while ($row = $this->datos->fetch(\PDO::FETCH_ASSOC)) {
             $array[] = $row;
         }
-        
-        $pesoSexo=2;
-        $pesoEstilo=2;
-        $numTemp = 0;
-        $numActual = 0;
-        $filaFinal = "";
-        
+
         foreach ($array as $fila) {
-            //sea asigna un peso de forma binaria
-            
-            if($estilo == $fila['Estilo']){
-                $pesoEstilo =1;
-            }
-            
-            if($sexo == $fila['Sexo']){
-                $pesoSexo =1;
-            }
-            
-            $numActual = sqrt(pow($fila['Promedio'] - (float)$promedio, 2) +
-                         pow($pesoEstilo, 2) + pow($pesoSexo, 2));
+            $promedio = intdiv(intval($fila['Promedio']), 1);
+            $recinto = $fila['Recinto'];
+            $sexo = $fila['Sexo'];
+            $estilo = $fila['Estilo'];
 
-            if ($numTemp == 0) {
-                $numTemp = $numActual;
-                $filaFinal = $fila['Recinto']; // en caso que el primer resultado sea el correcto
-            } else if ($numActual < $numTemp) {
-                $numTemp = $numActual;
-                $filaFinal = $fila['Recinto'];
-            }
-            
-            // se reinician los valores
-            $pesoSexo=2;
-            $pesoEstilo=2;
-           
+            $this->sql = "INSERT INTO estilosexopromediorecintoAcomodados values ('$sexo','$recinto', $promedio, '$estilo')";
+            $this->con->consultaSimple($this->sql);
         }
-         return "El Recinto es: " . $filaFinal;
-         
-     }
-
+    }
 }
 ?>

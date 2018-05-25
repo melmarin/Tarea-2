@@ -55,7 +55,7 @@ class Formulario1Model {
 
         $this->ea = intdiv($arrayEA['c4'] + $arrayEA['c12'] + $arrayEA['c24'] +
                 $arrayEA['c28'] + $arrayEA['c32'] + $arrayEA['c36'], 4);
-
+       
         //Se asignan las probabilidades de cada atributo
        array_push($this->arrayValores, $this->asignaProbabilida("CA"));
         array_push($this->arrayValores, $this->asignaProbabilida("EC"));
@@ -223,7 +223,7 @@ class Formulario1Model {
 
     //Método utilizado para insertar una nueva tabla con los datos acomodados
     //Para las columnas el valor mínimo posible es 4 y el máximo es 6
-    //Por lo tanto se crearon 4 grupos dividiendo cada valor entre 6 y tomando su parte entera
+    //Por lo tanto se crearon 6 grupos dividiendo cada valor entre 4 y tomando su parte entera
     public function insertarDatosAcomodados() {
         $this->sql = "SELECT * FROM DatosTarea1";
         $this->datos = $this->con->consultaRetorno($this->sql);
