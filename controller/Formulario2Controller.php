@@ -34,3 +34,4 @@ class Formulario2Controller {
         }
     }
 }
+?>
