@@ -147,6 +147,7 @@ class Formulario5Model {
 
     public function asignaProbabilidadPorFrecuenciaBeginner() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+          //Respetar el orden de los arreglos
         foreach ($this->arrayBeginner as $atributo => $valor) {
             $result = $this->arrayBeginner[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -156,6 +157,7 @@ class Formulario5Model {
     
      public function asignaProbabilidadPorFrecuenciaIntermediate() {
          //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+           //Respetar el orden de los arreglos
         foreach ($this->arrayIntermediate as $atributo => $valor) {
             $result = $this->arrayIntermediate[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -165,6 +167,7 @@ class Formulario5Model {
     
     public function asignaProbabilidadPorFrecuenciaAdvanced() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+          //Respetar el orden de los arreglos
         foreach ($this->arrayAdvanced as $atributo => $valor) {
             $result = $this->arrayAdvanced[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -187,17 +190,17 @@ class Formulario5Model {
          $resultadoIntermediate = $this->frecuenciasIntermediate * self::probabilidadClase;
          $resultadoAdvanced = $this->frecuenciasAdvanced * self::probabilidadClase;
          $mayor; //variable para retornar
-      
+         $resultados = ["Beginner" => $resultadoBegineer, "Intermediate" => $resultadoIntermediate,
+             "Advanced" => $resultadoAdvanced];
+         
          //se determina el mayor de los resultados y se retorna
-         if($resultadoBegineer >= $resultadoIntermediate && $resultadoBegineer >= $resultadoAdvanced){
-             $mayor = "Beginner";
-         } else if ($resultadoIntermediate >= $resultadoBegineer && $resultadoIntermediate >= $resultadoAdvanced){
-             $mayor = "Intermediate";
-         }
-         else{
-             $mayor = "Advanced";
-         }
-         return $mayor;
+         //se determina el mayor de los resultados y se retorna
+         $mayor = max($resultados);
+         foreach ($resultados as $atributo => $valor) {
+           if($mayor ==  $resultados[$atributo]){
+               return $atributo;
+           } 
+        }
     }
 
 }

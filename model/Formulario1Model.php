@@ -159,6 +159,7 @@ class Formulario1Model {
 
     public function asignaProbabilidadPorFrecuenciaAcomodador() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+          //Respetar el orden de los arreglos
         foreach ($this->arrayAcomodador as $atributo => $valor) {
             $result = $this->arrayAcomodador[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -168,6 +169,7 @@ class Formulario1Model {
     
      public function asignaProbabilidadPorFrecuenciaDivergente() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+           //Respetar el orden de los arreglos
         foreach ($this->arrayDivergente as $atributo => $valor) {
             $result = $this->arrayDivergente[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -177,6 +179,7 @@ class Formulario1Model {
     
     public function asignaProbabilidadPorFrecuenciaAsimilador() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+          //Respetar el orden de los arreglos
         foreach ($this->arrayAsimilador as $atributo => $valor) {
             $result = $this->arrayAsimilador[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -186,6 +189,7 @@ class Formulario1Model {
     
     public function asignaProbabilidadPorFrecuenciaConvergente() {
         //Se aplica la fórmula (valor+m*p)/(n+m) para cada valor
+          //Respetar el orden de los arreglos
         foreach ($this->arrayConvergente as $atributo => $valor) {
             $result = $this->arrayConvergente[$atributo] + self::m * $this->arrayValores[$atributo];
             $result = $result / ( self::n + self::m);
@@ -216,7 +220,6 @@ class Formulario1Model {
          foreach ($resultados as $atributo => $valor) {
            if($mayor ==  $resultados[$atributo]){
                return $atributo;
-               break;
            } 
         }
     }
