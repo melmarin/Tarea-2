@@ -42,7 +42,7 @@ class Formulario1Model {
         //calcula los valores de las columnas código reciclado del javascript
         //Del resultado de las columnas se divide entre 4 y se obtiene la parte entera 
         //(ya que así se definió en la Base con los datos acomodados)
-        //(VER) insertarDatosAcomodados() y la tabla datostarea1acomodados
+        //(VER) método al final de la clase: insertarDatosAcomodados() y la tabla datostarea1acomodados
 
         $this->ec = intdiv($arrayEC['c5'] + $arrayEC['c9'] + $arrayEC['c13'] +
                 $arrayEC['c17'] + $arrayEC['c25'] + $arrayEC['c29'], 4);
