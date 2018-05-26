@@ -14,46 +14,43 @@
 class PrincipalController {
     private $controller;
     private $model;
+    private $ruta = '/opt/lampp/htdocs/estudiantes/Tarea2B03675/';
     
      public function invoke() {
          
          if (isset($_GET['formulario1'])){
-            require_once 'controller/Formulario1Controller.php';
+             include($this->ruta.'controller/Formulario1Controller.php');
             $this->controller = new Formulario1Controller();
             $this->controller->invoke();
             
          }//if formulario
          
          elseif (isset($_GET['formulario2'])){
-             require_once 'controller/Formulario2Controller.php';
+              include($this->ruta.'controller/Formulario2Controller.php');
             $this->controller = new Formulario2Controller();
             $this->controller->invoke();
          }
          
           elseif (isset($_GET['formulario3'])){
-             require_once 'controller/Formulario3Controller.php';
+             include($this->ruta.'controller/Formulario3Controller.php');
             $this->controller = new Formulario3Controller();
             $this->controller->invoke();
          }
          
           elseif (isset($_GET['formulario4'])){
-             require_once 'controller/Formulario4Controller.php';
+             include($this->ruta.'controller/Formulario4Controller.php');
             $this->controller = new Formulario4Controller();
             $this->controller->invoke();
          }
          
          elseif (isset($_GET['formulario5'])){
-            require_once 'controller/Formulario5Controller.php';
+            include($this->ruta.'controller/Formulario5Controller.php');
             $this->controller = new Formulario5Controller();
             $this->controller->invoke();
          }
          
-         elseif (isset($_GET['inicio'])){
-             include 'view/InicioView.php';
-         }
-         
          else{
-             include 'view/IndexView.php';
+             include($this->ruta.'view/indexView.php');
          }
      }
 }

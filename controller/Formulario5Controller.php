@@ -11,7 +11,7 @@
  *
  * @author Usuario
  */
-require_once 'model/Formulario5Model.php';
+require_once '/opt/lampp/htdocs/estudiantes/Tarea2B03675/model/Formulario5Model.php';
 
 class Formulario5Controller {
     private $model;
@@ -31,7 +31,7 @@ class Formulario5Controller {
                
             }//if formulario
             
-             include 'view/Formulario5View.php';
+             include '/opt/lampp/htdocs/estudiantes/Tarea2B03675/view/Formulario5View.php';
         }
     }
 }

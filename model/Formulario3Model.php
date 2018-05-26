@@ -7,7 +7,7 @@
  */
 
 namespace model;
-require_once 'core/Conexion.php';
+require_once '/opt/lampp/htdocs/estudiantes/Tarea2B03675/core/Conexion.php';
 
 /**
  * Description of Formulario3Model
@@ -31,7 +31,7 @@ class Formulario3Model {
     //Constantes
     const m = 3; //Cantidad de clases(eventos)
     const n = 2; //total de instancias por cada clase
-    const probabilidadClase = 1 / 2; //la probabilidad de que ocurra cada clase
+    const probabilidadClase = 0.5; //la probabilidad de que ocurra cada clase
 
     public function __construct() {
         $this->con = new \core\Conexion();
@@ -41,7 +41,7 @@ class Formulario3Model {
          //Se asignan las probabilidades de cada atributo
         array_push($this->arrayValores, $this->asignaProbabilida("Estilo"));
         array_push($this->arrayValores, $this->asignaProbabilida("Recinto"));
-        array_push($this->arrayValores, 1/10); //PARA EL PROMEDIO
+        array_push($this->arrayValores, 0.10); //PARA EL PROMEDIO
          
           //Se asignan las frecuencias de cada atributo por clase
         //MASCULINO

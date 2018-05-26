@@ -8,7 +8,7 @@
 
 namespace model;
 
-require_once 'core/Conexion.php';
+require_once '/opt/lampp/htdocs/estudiantes/Tarea2B03675/core/Conexion.php';
 
 /**
  * Description of Formulario5Model
@@ -35,7 +35,7 @@ class Formulario5Model {
     //Constantes
     const m = 8; //Cantidad de clases(eventos)
     const n = 3; //total de instancias por cada clase
-    const probabilidadClase = 1/3; //la probabilidad de que ocurra cada clase
+    const probabilidadClase = 0.3333333333333333; //la probabilidad de que ocurra cada clase
     
     public function __construct() {
         $this->con = new \core\Conexion();
@@ -103,7 +103,7 @@ class Formulario5Model {
     //según los valores de cada característica
     public function asignaProbabilida($atributo) {
         // Se obtiene el valor para cada característica
-        $this->sql = "SELECT COUNT(DISTINCT " . $atributo . ") from datosprofesores";
+        $this->sql = "SELECT COUNT(DISTINCT " . $atributo . ") from DatosProfesores";
         $this->datos = $this->con->consultaRetorno($this->sql);
         $this->row = $this->datos->fetch(\PDO::FETCH_NUM);
         $valor = intval($this->row[0]);
@@ -115,7 +115,7 @@ class Formulario5Model {
     public function asignaFrecuenciasClaseBeginner($atributo, $valor) {
         //Se cuenta la cantidad de veces que aparece el valor en la clase Beginner para ese atributo
                 //fórmula SUMAR SI
-        $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Beginner' "
+        $this->sql = "SELECT COUNT(" . $atributo . ") from DatosProfesores where class = 'Beginner' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
         $this->row = $this->datos->fetch(\PDO::FETCH_NUM);
@@ -126,7 +126,7 @@ class Formulario5Model {
     public function asignaFrecuenciasClaseIntermediate($atributo, $valor) {
          //Se cuenta la cantidad de veces que aparece el valor en la clase Intermediate para ese atributo
                 //fórmula SUMAR SI
-        $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Intermediate' "
+        $this->sql = "SELECT COUNT(" . $atributo . ") from DatosProfesores where class = 'Intermediate' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
         $this->row = $this->datos->fetch(\PDO::FETCH_NUM);
@@ -137,7 +137,7 @@ class Formulario5Model {
     public function asignaFrecuenciasClaseAdvanced($atributo, $valor) {
          //Se cuenta la cantidad de veces que aparece el valor en la clase Advanced para ese atributo
                 //fórmula SUMAR SI
-        $this->sql = "SELECT COUNT(" . $atributo . ") from datosprofesores where class = 'Advanced' "
+        $this->sql = "SELECT COUNT(" . $atributo . ") from DatosProfesores where class = 'Advanced' "
                 . "AND " . $atributo . "= '$valor' ";
         $this->datos = $this->con->consultaRetorno($this->sql);
         $this->row = $this->datos->fetch(\PDO::FETCH_NUM);

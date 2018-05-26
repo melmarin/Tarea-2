@@ -2,7 +2,7 @@
 
 Namespace model;
 
-require_once 'core/Conexion.php';
+require_once '/opt/lampp/htdocs/estudiantes/Tarea2B03675/core/Conexion.php';
 
 class Formulario1Model {
 
@@ -31,11 +31,15 @@ class Formulario1Model {
     //Constantes
     const m = 4; //Cantidad de clases(eventos)
     const n = 4; //total de instancias por cada clase
-    const probabilidadClase = 1 / 4; //la probabilidad de que ocurra cada clase
+    const probabilidadClase = 0.25; //la probabilidad de que ocurra cada clase
 
     public function __construct() {
         $this->con = new \core\Conexion();
     }
+    
+    function intdiv($a, $b){
+    return ($a - $a % $b) / $b;
+}
 
     public function calcularClasificacionBayesiana($arrayEC, $arrayOR, $arrayCA, $arrayEA) {
 
@@ -44,16 +48,16 @@ class Formulario1Model {
         //(ya que así se definió en la Base con los datos acomodados)
         //(VER) método al final de la clase: insertarDatosAcomodados() y la tabla datostarea1acomodados
 
-        $this->ec = intdiv($arrayEC['c5'] + $arrayEC['c9'] + $arrayEC['c13'] +
+        $this->ec = $this->intdiv($arrayEC['c5'] + $arrayEC['c9'] + $arrayEC['c13'] +
                 $arrayEC['c17'] + $arrayEC['c25'] + $arrayEC['c29'], 4);
 
-        $this->or = intdiv($arrayOR['c2'] + $arrayOR['c10'] + $arrayOR['c22'] +
+        $this->or = $this->intdiv($arrayOR['c2'] + $arrayOR['c10'] + $arrayOR['c22'] +
                 $arrayOR['c26'] + $arrayOR['c30'] + $arrayOR['c34'], 4);
 
-        $this->ca = intdiv($arrayCA['c7'] + $arrayCA['c11'] + $arrayCA['c15'] +
+        $this->ca = $this->intdiv($arrayCA['c7'] + $arrayCA['c11'] + $arrayCA['c15'] +
                 $arrayCA['c19'] + $arrayCA['c31'] + $arrayCA['c35'], 4);
 
-        $this->ea = intdiv($arrayEA['c4'] + $arrayEA['c12'] + $arrayEA['c24'] +
+        $this->ea = $this->intdiv($arrayEA['c4'] + $arrayEA['c12'] + $arrayEA['c24'] +
                 $arrayEA['c28'] + $arrayEA['c32'] + $arrayEA['c36'], 4);
        
         //Se asignan las probabilidades de cada atributo
