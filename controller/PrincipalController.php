@@ -49,6 +49,12 @@ class PrincipalController {
             $this->controller->invoke();
          }
          
+         elseif (isset($_GET['formulario6'])){
+            include($this->ruta.'controller/Formulario6Controller.php');
+            $this->controller = new Formulario6Controller();
+            $this->controller->invoke();
+         }
+         
          else{
              include($this->ruta.'view/indexView.php');
          }
